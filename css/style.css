@@ -1,3 +1,37 @@
 body {
     text-align: center;
 }
+
+/*
+ * Styles for the replay button
+ */
+
+ .replay-btn {
+    height: 2em;
+    width: 6em;
+    border-radius: 5px;
+    border: 0;
+    background: #02b3e4;
+    color: #fff;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding-top: 30vh;
+    background-color: #00000080;
+}
+
+.modal-content {
+    width: 60%;
+    border-radius: 8px;
+    margin: auto;
+    padding: 26px;
+    text-align: center;
+    background-color: #eee;
+}
