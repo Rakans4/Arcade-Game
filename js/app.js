@@ -16,6 +16,11 @@ class Enemy {
         this.sprite = 'images/enemy-bug.png';
     }
 
+    // Draw the enemy on the screen, required method for game
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+
     // Update the enemy's position, required method for game
     // Parameter: dt, a time delta between ticks
     update(dt) {
@@ -42,11 +47,6 @@ class Enemy {
             modal.style.display = 'block'; 
         }
     }
-
-    // Draw the enemy on the screen, required method for game
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    }
 }
 
 // Now write your own player class
@@ -54,10 +54,10 @@ class Enemy {
 // a handleInput() method.
 class Player {
     constructor() {
-        this.sprite = 'images/char-boy.png';
         this.x = 200;
         this.y = 380;
         this.collectibles = 0;
+        this.sprite = 'images/char-boy.png';
     }
 
     render() {
@@ -65,7 +65,6 @@ class Player {
     }
 
     update() {
-
         // the condition for when the player reachees the water
         // winning condition
         if(this.y < -10){
@@ -74,7 +73,6 @@ class Player {
             finalScore.innerHTML = this.collectibles;
             modal.style.display = "block";
         }
-
         // conditions for the player so he can't go out of the field
         if(this.x > 400) {
             this.x = 400;
@@ -107,12 +105,8 @@ class Player {
         if(direction == 'down'){
             this.y += 80;
         }
-
-        console.log(this.x +' - '+this.y);
-
     }
 }
-
 
 class Gem {
     constructor(x, y) {
@@ -170,8 +164,6 @@ const field = {
 // initialize a new gem with a random location on the field 
 let gem = new Gem(field.x[Math.floor(Math.random()*5)], field.y[Math.floor(Math.random()*3)]);
 
-
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
@@ -185,7 +177,7 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// 
+// reset the game
 replay.addEventListener('click', function(event) {
     modal.style.display = "none";
     player.collectibles = 0;
